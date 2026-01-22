@@ -32,9 +32,61 @@
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 60px 30px;
-            text-align: center;
+            padding: 40px 30px;
             animation: slideDown 0.8s ease;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .profile-section {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-picture {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            overflow: hidden;
+        }
+
+        .profile-picture:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #profileInput {
+            display: none;
+        }
+
+        .upload-hint {
+            font-size: 0.85em;
+            opacity: 0.8;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .header-content {
+            flex: 1;
+            text-align: center;
         }
 
         @keyframes slideDown {
@@ -49,13 +101,13 @@
         }
 
         .header h1 {
-            font-size: 3em;
+            font-size: 2.8em;
             margin-bottom: 10px;
             font-weight: 700;
         }
 
         .header .title {
-            font-size: 1.5em;
+            font-size: 1.4em;
             margin-bottom: 20px;
             opacity: 0.9;
         }
@@ -347,7 +399,22 @@
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .header {
-                padding: 40px 20px;
+                flex-direction: column;
+                padding: 30px 20px;
+            }
+
+            .profile-section {
+                margin-bottom: 20px;
+            }
+
+            .profile-picture {
+                width: 140px;
+                height: 140px;
+                font-size: 50px;
+            }
+
+            .header-content {
+                text-align: center;
             }
 
             .header h1 {
@@ -355,15 +422,19 @@
             }
 
             .header .title {
-                font-size: 1.2em;
+                font-size: 1.1em;
+            }
+
+            .header .subtitle {
+                font-size: 0.85em;
             }
 
             .contact-info {
-                gap: 15px;
+                gap: 12px;
             }
 
             .contact-item {
-                font-size: 0.85em;
+                font-size: 0.75em;
             }
 
             .nav-tabs {
@@ -416,24 +487,31 @@
     <div class="container">
         <!-- HEADER -->
         <div class="header">
-            <h1>Iliyas Khan</h1>
-            <p class="title">IT Support Engineer - L4</p>
-            <p class="subtitle">
-                6+ years of IT operations expertise | Enterprise Application Support | Network Infrastructure | 
-                Supporting 500+ users in high-security environments
-            </p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    📧 <a href="mailto:khaneliyas01@gmail.com" style="color: white; text-decoration: none;">khaneliyas01@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    📱 +91-8806320806
-                </div>
-                <div class="contact-item">
-                    📍 Pune, India
-                </div>
-                <div class="contact-item">
-                    💼 <a href="https://linkedin.com/in/khaneliyas01" target="_blank" style="color: white; text-decoration: none;">LinkedIn</a>
+            <div class="profile-section">
+                <div class="profile-picture" id="profilePicture" onclick="document.getElementById('profileInput').click()">👤</div>
+                <input type="file" id="profileInput" accept="image/*" onchange="loadProfilePicture(event)">
+                <div class="upload-hint">Click to upload photo</div>
+            </div>
+            <div class="header-content">
+                <h1>Iliyas Khan</h1>
+                <p class="title">IT Support Engineer - L4</p>
+                <p class="subtitle">
+                    6+ years of IT operations expertise | Enterprise Application Support | Network Infrastructure | 
+                    Supporting 500+ users in high-security environments
+                </p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        📧 <a href="mailto:khaneliyas01@gmail.com" style="color: white; text-decoration: none;">khaneliyas01@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        📱 +91-8806320806
+                    </div>
+                    <div class="contact-item">
+                        📍 Pune, India
+                    </div>
+                    <div class="contact-item">
+                        💼 <a href="https://linkedin.com/in/khaneliyas01" target="_blank" style="color: white; text-decoration: none;">LinkedIn</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -675,6 +753,30 @@
         function toggleExpand(card) {
             card.classList.toggle('expanded');
         }
+
+        // Load and display profile picture
+        function loadProfilePicture(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const profilePicture = document.getElementById('profilePicture');
+                    profilePicture.innerHTML = '<img src="' + e.target.result + '" alt="Profile Picture">';
+                    // Save to localStorage so it persists
+                    localStorage.setItem('profilePicture', e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Load saved profile picture from localStorage on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedPicture = localStorage.getItem('profilePicture');
+            if (savedPicture) {
+                const profilePicture = document.getElementById('profilePicture');
+                profilePicture.innerHTML = '<img src="' + savedPicture + '" alt="Profile Picture">';
+            }
+        });
 
         // Smooth scroll on load
         window.addEventListener('load', () => {
