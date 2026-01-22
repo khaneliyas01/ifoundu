@@ -3,51 +3,705 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile - IT Support Engineer</title>
+    <title>Iliyas Khan - IT Support Engineer L4</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
         }
-        header {
-            background: #35424a;
-            color: #ffffff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        section {
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
             padding: 20px;
-            margin: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             background: #ffffff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
         }
-        h1, h2 {
-            color: #35424a;
-        }
-        footer {
+
+        /* HEADER & HERO */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 30px;
             text-align: center;
-            padding: 10px 0;
-            background: #35424a;
-            color: #ffffff;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .header .subtitle {
+            font-size: 0.95em;
+            opacity: 0.85;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* CONTACT INFO */
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        /* NAV TABS */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 30px;
+            background: #f8f9fa;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            border: none;
+            background: transparent;
+            color: #667eea;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 25px;
             position: relative;
-            bottom: 0;
-            width: 100%;
         }
-        .project {
-            margin: 10px 0;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        .project:hover {
+
+        .tab-btn:hover {
             background: #e9ecef;
+            transform: translateY(-2px);
         }
-        .profile-image {
-            width: 150px;
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* CONTENT SECTIONS */
+        .content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-content {
+            padding: 40px 30px;
+        }
+
+        .section-content h2 {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* EXPERIENCE CARDS */
+        .experience-card {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 4px solid #667eea;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .experience-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+            border-left-color: #764ba2;
+        }
+
+        .experience-card h3 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .experience-card .company {
+            font-weight: 700;
+            color: #764ba2;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .experience-card .date-location {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .experience-card .skills-tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-right: 8px;
+            margin-bottom: 10px;
+        }
+
+        .experience-card .description {
+            color: #555;
+            line-height: 1.8;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .experience-card.expanded .description {
+            display: block;
+        }
+
+        .experience-card .expand-icon {
+            float: right;
+            transition: transform 0.3s;
+        }
+
+        .experience-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        /* SKILLS SECTION */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 3px solid #667eea;
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 8px;
+            margin-right: 8px;
+            font-size: 0.9em;
+            color: #667eea;
+            border: 2px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* EDUCATION SECTION */
+        .education-card {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .education-card h4 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .education-card .institution {
+            color: #764ba2;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .education-card .date {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .education-card .percentage {
+            background: #667eea;
+            color: white;
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        /* TOOLS SECTION */
+        .tools-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .tool-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tool-badge:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            border-top: 2px solid #e9ecef;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #764ba2;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .header .title {
+                font-size: 1.2em;
+            }
+
+            .contact-info {
+                gap: 15px;
+            }
+
+            .contact-item {
+                font-size: 0.85em;
+            }
+
+            .nav-tabs {
+                padding: 20px;
+            }
+
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+
+            .section-content {
+                padding: 30px 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .tools-container {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+
+        /* SCROLL EFFECT */
+        .fade-in {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-indicator {
+            text-align: center;
+            color: #667eea;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>Iliyas Khan</h1>
+            <p class="title">IT Support Engineer - L4</p>
+            <p class="subtitle">
+                6+ years of IT operations expertise | Enterprise Application Support | Network Infrastructure | 
+                Supporting 500+ users in high-security environments
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    📧 <a href="mailto:khaneliyas01@gmail.com" style="color: white; text-decoration: none;">khaneliyas01@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    📱 +91-8806320806
+                </div>
+                <div class="contact-item">
+                    📍 Pune, India
+                </div>
+                <div class="contact-item">
+                    💼 <a href="https://linkedin.com/in/khaneliyas01" target="_blank" style="color: white; text-decoration: none;">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAVIGATION TABS -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('experience')">💼 Experience</button>
+            <button class="tab-btn" onclick="switchTab('skills')">🎯 Skills</button>
+            <button class="tab-btn" onclick="switchTab('education')">🎓 Education</button>
+            <button class="tab-btn" onclick="switchTab('tools')">🛠️ Tools</button>
+        </div>
+
+        <!-- EXPERIENCE SECTION -->
+        <div id="experience" class="content active">
+            <div class="section-content">
+                <h2>💼 Work Experience</h2>
+                
+                <div class="experience-card" onclick="toggleExpand(this)">
+                    <h3>IT Support Engineer - L4 <span class="expand-icon">▼</span></h3>
+                    <p class="company">Coinbase</p>
+                    <p class="date-location">11/2024 - Present | Hyderabad, India</p>
+                    <div>
+                        <span class="skills-tag">Okta</span>
+                        <span class="skills-tag">Jira</span>
+                        <span class="skills-tag">JAMF</span>
+                        <span class="skills-tag">Google Admin</span>
+                        <span class="skills-tag">Splunk</span>
+                        <span class="skills-tag">Networking</span>
+                    </div>
+                    <div class="description">
+                        <ul style="margin-left: 20px; line-height: 1.8;">
+                            <li>Primary onsite IT owner for the Hyderabad office, supporting 500+ employees across engineering, operations, and leadership providing day-to-day support across macOS, Chrome OS and Windows</li>
+                            <li>Handle hardware lifecycle management including laptop provisioning, replacements, peripherals, and inventory tracking</li>
+                            <li>Perform mid-level network troubleshooting (LAN, Wi-Fi, VPN, connectivity issues) and coordinate with vendors for resolution</li>
+                            <li>Act as the voice of the user, gathering feedback, identifying recurring issues and driving continuous improvements</li>
+                            <li>Collaborate with global IT, security, compliance teams, and BPO partners to create policies and SOPs</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card" onclick="toggleExpand(this)">
+                    <h3>Senior Technical Support Engineer <span class="expand-icon">▼</span></h3>
+                    <p class="company">Citrix</p>
+                    <p class="date-location">10/2022 - 10/2024 | Bengaluru, India</p>
+                    <div>
+                        <span class="skills-tag">ShareFile</span>
+                        <span class="skills-tag">RightSignature</span>
+                        <span class="skills-tag">Podio</span>
+                        <span class="skills-tag">SSO/IdP</span>
+                        <span class="skills-tag">Okta</span>
+                    </div>
+                    <div class="description">
+                        <ul style="margin-left: 20px; line-height: 1.8;">
+                            <li>Provided comprehensive technical support to a diverse client base, including enterprise clients and SMB clients, for products such as ShareFile, RightSignature and Podio</li>
+                            <li>Assisted enterprise clients in the seamless setup of Single Sign-On (SSO) using various Identity Providers (IDPs) such as Okta, Azure AD, ADFS, ensuring secure and efficient authentication processes</li>
+                            <li>Served as a mentor for new hires, guiding junior engineers on troubleshooting methodology and issue isolation</li>
+                            <li>Created and maintained knowledge base articles, improving internal efficiency and first-contact resolution rates</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card" onclick="toggleExpand(this)">
+                    <h3>Infrastructure Management Tech I <span class="expand-icon">▼</span></h3>
+                    <p class="company">Compucom</p>
+                    <p class="date-location">08/2019 - 09/2022 | Pune, India</p>
+                    <div>
+                        <span class="skills-tag">BGP</span>
+                        <span class="skills-tag">VLAN</span>
+                        <span class="skills-tag">Juniper</span>
+                        <span class="skills-tag">Cisco</span>
+                        <span class="skills-tag">Routing</span>
+                    </div>
+                    <div class="description">
+                        <ul style="margin-left: 20px; line-height: 1.8;">
+                            <li>Proficiently troubleshooted Juniper and Cisco devices using tools such as PuTTY, ensuring prompt issue resolution and optimal network performance</li>
+                            <li>Installed and configured new network devices according to company standards, guaranteeing consistency and adherence to established protocols</li>
+                            <li>Actively participated in the planning and execution of network upgrades and expansions, providing technical expertise and support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SKILLS SECTION -->
+        <div id="skills" class="content">
+            <div class="section-content">
+                <h2>🎯 Skills & Expertise</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Application Support</h4>
+                        <div>
+                            <span class="skill-item">Troubleshooting</span>
+                            <span class="skill-item">Debugging</span>
+                            <span class="skill-item">Splunk</span>
+                            <span class="skill-item">HAR Analysis</span>
+                            <span class="skill-item">Fiddler</span>
+                            <span class="skill-item">ProcMon</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Networking</h4>
+                        <div>
+                            <span class="skill-item">Juniper</span>
+                            <span class="skill-item">Cisco</span>
+                            <span class="skill-item">BGP/RIP</span>
+                            <span class="skill-item">VLAN</span>
+                            <span class="skill-item">VPN</span>
+                            <span class="skill-item">Ethernet</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Programming & Scripting</h4>
+                        <div>
+                            <span class="skill-item">PowerShell</span>
+                            <span class="skill-item">SQL</span>
+                            <span class="skill-item">API</span>
+                            <span class="skill-item">Database Mgmt</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Identity & Access</h4>
+                        <div>
+                            <span class="skill-item">Okta Admin</span>
+                            <span class="skill-item">Azure AD</span>
+                            <span class="skill-item">ADFS</span>
+                            <span class="skill-item">Google Admin</span>
+                            <span class="skill-item">SSO/IdP Setup</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>IT Management</h4>
+                        <div>
+                            <span class="skill-item">JAMF</span>
+                            <span class="skill-item">ITIL</span>
+                            <span class="skill-item">Incident Mgmt</span>
+                            <span class="skill-item">RCA</span>
+                            <span class="skill-item">SOP Creation</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Certifications</h4>
+                        <div>
+                            <span class="skill-item">CCNA</span>
+                            <span class="skill-item">AirWatch VSP</span>
+                            <span class="skill-item">Citrix EP Mgmt</span>
+                            <span class="skill-item">Citrix Content Collab</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDUCATION SECTION -->
+        <div id="education" class="content">
+            <div class="section-content">
+                <h2>🎓 Education</h2>
+
+                <div class="education-card">
+                    <h4>B.E. Information Technology</h4>
+                    <p class="institution">JSCOE, JSPM Institute</p>
+                    <p class="date">08/2014 - 06/2019</p>
+                    <span class="percentage">65.80%</span>
+                </div>
+
+                <div class="education-card">
+                    <h4>Higher Secondary Education (XII)</h4>
+                    <p class="institution">AKI's Poona College</p>
+                    <p class="date">07/2012 - 04/2014</p>
+                    <span class="percentage">67.23%</span>
+                </div>
+
+                <div class="education-card">
+                    <h4>Secondary Education</h4>
+                    <p class="institution">St. Josephs High School</p>
+                    <p class="date">04/2000 - 06/2012</p>
+                    <span class="percentage">77.09%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOOLS SECTION -->
+        <div id="tools" class="content">
+            <div class="section-content">
+                <h2>🛠️ Tools & Technologies</h2>
+                
+                <div class="tools-container">
+                    <div class="tool-badge">Okta Admin</div>
+                    <div class="tool-badge">Google Admin</div>
+                    <div class="tool-badge">Jira Admin</div>
+                    <div class="tool-badge">JAMF</div>
+                    <div class="tool-badge">PuTTY</div>
+                    <div class="tool-badge">Splunk</div>
+                    <div class="tool-badge">PowerShell</div>
+                    <div class="tool-badge">Salesforce</div>
+                    <div class="tool-badge">ServiceNow</div>
+                    <div class="tool-badge">ShareFile</div>
+                    <div class="tool-badge">Podio</div>
+                    <div class="tool-badge">MySQL</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>&copy; 2026 Iliyas Khan | IT Support Engineer L4</p>
+            <p>📧 <a href="mailto:khaneliyas01@gmail.com">khaneliyas01@gmail.com</a> | 📱 +91-8806320806 | 
+            💼 <a href="https://linkedin.com/in/khaneliyas01" target="_blank">LinkedIn Profile</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all content
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+
+            // Scroll animation
+            document.querySelector('.section-content').classList.add('fade-in');
+        }
+
+        // Expand/Collapse experience cards
+        function toggleExpand(card) {
+            card.classList.toggle('expanded');
+        }
+
+        // Smooth scroll on load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.experience-card').forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.animation = `fadeInUp ${0.6 + index * 0.1}s ease`;
+                }, 50);
+            });
+        });
+
+        // Add hover effects to skill items
+        document.querySelectorAll('.skill-item').forEach(skill => {
+            skill.addEventListener('click', function() {
+                this.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+
+        // Tool badges animation
+        document.querySelectorAll('.tool-badge').forEach((badge, index) => {
+            badge.style.animation = `fadeIn ${0.3 + index * 0.05}s ease`;
+        });
+    </script>
+</body>
+</html>
             border-radius: 75px;
             margin: 20px;
         }
